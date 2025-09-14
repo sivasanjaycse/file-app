@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-// All components are defined within this single file
+
 export default function UploadSection({ onFileUploaded }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,17 +42,26 @@ export default function UploadSection({ onFileUploaded }) {
   };
 
   return (
-    <div>
-      <h2>1. Upload Your File</h2>
-      <div>
-        <input type="file" onChange={handleFileChange} ref={fileInputRef} />
-        <button onClick={handleUpload} disabled={!selectedFile || isLoading}>
+    <div className="section-card">
+      <h2 className="section-title">1. Upload Your File</h2>
+      <div className="input-group">
+        <input
+          type="file"
+          onChange={handleFileChange}
+          ref={fileInputRef}
+          className="file-input"
+        />
+        <button
+          onClick={handleUpload}
+          disabled={!selectedFile || isLoading}
+          className="upload-button"
+        >
           {isLoading ? "Uploading..." : "Upload"}
         </button>
       </div>
       {selectedFile && (
-        <p>
-          Selected file: <span>{selectedFile.name}</span>
+        <p className="selected-file-info">
+          Selected file: <span className="file-name">{selectedFile.name}</span>
         </p>
       )}
     </div>

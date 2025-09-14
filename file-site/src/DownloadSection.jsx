@@ -35,24 +35,27 @@ export default function DownloadSection({ uploadedKeyword }) {
   };
 
   return (
-    <div>
-      <h2>2. Download Your File</h2>
+    <div className="section-card">
+      <h2 className="section-title">2. Download Your File</h2>
       {uploadedKeyword && (
-        <div>
+        <div className="keyword-display">
           Your generated keyword is:{" "}
-          <span className="text-green-900 font-extrabold">
-            {uploadedKeyword}
-          </span>
+          <span className="keyword">{uploadedKeyword}</span>
         </div>
       )}
-      <div>
+      <div className="input-group">
         <input
           type="text"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           placeholder="Enter keyword to download file"
+          className="keyword-input"
         />
-        <button onClick={handleDownload} disabled={isLoading}>
+        <button
+          onClick={handleDownload}
+          disabled={isLoading}
+          className="download-button"
+        >
           {isLoading ? "Downloading..." : "Download File"}
         </button>
       </div>
